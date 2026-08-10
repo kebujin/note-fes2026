@@ -52,7 +52,6 @@
     position:relative;
     aspect-ratio:4000/1442;
     min-height:550px;
-    max-height:900px;
     width:100%;
     background-image: url('image/main.jpg');
     background-size:cover;
@@ -66,8 +65,7 @@
 
   @media (max-width:600px){
     header.hero{
-      aspect-ratio:auto;
-      height:clamp(420px, 130vw, 560px);
+      aspect-ratio:4/3;
       min-height:0;
       max-height:none;
     }
