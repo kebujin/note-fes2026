@@ -403,7 +403,7 @@ function render(){
       el.innerHTML = `
         <div class="art ${box.image ? '' : 'no-image'}" ${box.image ? `style="background-image:url('${box.image}');background-size:cover;background-position:center;"` : ""}></div>
         <div class="bar">
-          <span class="icon">${box.icon}</span>
+          <!-- アイコンは折り返し軽減のため非表示中: <span class="icon">${box.icon}</span> -->
           <span class="titles">
             <span class="en">${box.en}</span>
             <span class="jp">（${box.jp}）</span>
