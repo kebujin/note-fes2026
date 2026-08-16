@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOTER CREATIVE FES 2026 | 夢と音楽の祝祭</title>
+<link rel="icon" href="image/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
 
 <!-- OGP -->
 <meta property="og:type" content="website">
@@ -163,7 +165,7 @@
   .day-eyebrow .day-word{
     font-family:var(--font-jp-serif);
     font-weight:700;
-    font-size:clamp(30px, 6.4vw, 52px);
+    font-size:clamp(27px, 5.8vw, 47px);
     letter-spacing:0.01em;
     color:var(--gold-text);
     vertical-align:baseline;
@@ -173,7 +175,7 @@
     font-family:var(--font-jp-serif);
     font-style:normal;
     font-weight:700;
-    font-size:clamp(30px, 6.4vw, 52px);
+    font-size:clamp(27px, 5.8vw, 47px);
     color:var(--gold-text);
     letter-spacing:0.01em;
     text-shadow:0 0 18px rgba(212,175,55,0.25);
@@ -181,7 +183,7 @@
   .day-eyebrow .label{
     font-family:var(--font-jp-serif);
     font-weight:700;
-    font-size:clamp(30px, 6.4vw, 52px);
+    font-size:clamp(27px, 5.8vw, 47px);
     color:var(--gold-text);
     margin-left:4px;
   }
@@ -291,15 +293,236 @@
     pointer-events:none;
     cursor:default;
   }
-  .stage-box.locked .art{
-    filter:grayscale(0.85) brightness(0.55);
-  }
-  .stage-box.locked .bar{
-    background:#3a3a3a;
-    color:#cfcfcf;
-  }
   .stage-box.locked .chev{display:none;}
 
+  /* ---------- SHOP LIST SECTION ---------- */
+  .shop-header{
+    text-align:center;
+  }
+  .shop-header .deco{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    font-size:18px; opacity:0.75; margin-bottom:14px;
+  }
+  .shop-header .deco .line{
+    flex:1; max-width:220px;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 4px, transparent 4px 9px);
+    opacity:0.6;
+  }
+  .shop-header .en{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(15px, 2.4vw, 19px);
+    letter-spacing:0.06em;
+    color:var(--gold);
+  }
+  .shop-header .jp{
+    font-family:var(--font-jp-serif);
+    font-weight:700;
+    font-size:clamp(22px, 4.2vw, 32px);
+    color:var(--gold-text);
+    margin-top:8px;
+  }
+
+  .shop-card{
+    margin-top:14px;
+    border:1.5px solid var(--gold-line);
+    border-radius:10px;
+    padding:8px 20px;
+    background:rgba(255,255,255,0.015);
+  }
+
+  .shop-group{
+    display:flex;
+    gap:20px;
+    padding:22px 0;
+  }
+  .shop-group + .shop-group{
+    border-top:1px solid var(--gold-line);
+  }
+  .shop-group .cat{
+    flex:0 0 128px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .shop-group.single .cat{
+    justify-content:center;
+  }
+  .shop-group .cat .icon-circle{
+    width:52px; height:52px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .shop-group .cat .icon-circle img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .shop-group .cat .cat-en{
+    font-family:var(--font-jp-body);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.03em;
+    color:var(--cat-color, var(--gold));
+  }
+  .shop-group .cat .cat-jp{
+    font-size:14px;
+    color:var(--gold-soft);
+    opacity:0.8;
+    margin-top:-4px;
+  }
+
+  .shop-group .items{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+  }
+  .shop-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 0;
+    border-bottom:1px dashed rgba(255,255,255,0.08);
+  }
+  .shop-row:last-child{border-bottom:none;}
+  .shop-row .s-name{
+    font-family:var(--font-jp-serif);
+    font-weight:700;
+    color:#f4ecd8;
+    font-size:15px;
+    flex:1;
+    min-width:0;
+  }
+  .shop-row .s-owner{
+    color:var(--gold-soft);
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .shop-row .s-chev{
+    color:var(--gold);
+    opacity:0.7;
+    font-size:16px;
+    flex-shrink:0;
+  }
+  a.shop-row{
+    transition:background .18s ease;
+    border-radius:4px;
+  }
+  a.shop-row:hover{
+    background:rgba(232,138,60,0.12);
+  }
+  a.shop-row:hover .s-name{
+    color:#e88a3c;
+  }
+  a.shop-row:hover .s-chev{
+    color:#e88a3c;
+    opacity:1;
+  }
+
+  @media (max-width:600px){
+    .shop-group{flex-direction:column; gap:10px;}
+    .shop-group .cat{flex-direction:row; align-items:center; flex:none; justify-content:flex-start;}
+    .shop-group.single .cat{justify-content:flex-start;}
+    .shop-group .cat .cat-jp{margin-top:0;}
+  }
+
+  /* ---------- LIMITED BANNER ---------- */
+  .limited-banner-wrap{
+    margin:0 0 44px;
+  }
+  .limited-banner{
+    display:block;
+    width:100%;
+    max-width:900px;
+    aspect-ratio:1736/906;
+    margin:0 auto;
+    border-radius:8px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    border:1.5px solid var(--gold-line);
+    box-shadow:0 8px 22px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,175,55,0.08) inset;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .limited-banner:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,175,55,0.15) inset;
+    border-color:var(--gold);
+  }
+
+  /* ---------- SPECIAL THANKS SECTION ---------- */
+  .thanks-card{
+    position:relative;
+    margin-top:30px;
+    border:1.5px solid var(--gold-line);
+    border-radius:10px;
+    padding:34px 24px 26px;
+    text-align:center;
+  }
+  .thanks-title{
+    color:var(--gold);
+    font-family:var(--font-jp-serif);
+    font-weight:700;
+    font-size:clamp(20px, 4vw, 30px);
+    letter-spacing:0.02em;
+    margin-bottom:20px;
+  }
+  .thanks-ticket{
+    max-width:560px;
+    margin:0 auto 22px;
+  }
+  .thanks-ticket img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .thanks-catch{
+    font-family:var(--font-jp-body);
+    font-weight:700;
+    font-size:clamp(16px, 2.6vw, 20px);
+    color:var(--gold-text);
+    margin:0 auto 14px;
+    line-height:1.6;
+    white-space:nowrap;
+  }
+  .thanks-desc{
+    font-size:14px;
+    line-height:1.9;
+    color:var(--gold-soft);
+    max-width:480px;
+    margin:0 auto 24px;
+  }
+  .thanks-guide{
+    font-size:14px;
+    font-weight:700;
+    line-height:1.8;
+    color:#ffffff;
+    max-width:480px;
+    margin:0 auto 10px;
+  }
+  .thanks-btn{
+    display:inline-block;
+    background:linear-gradient(135deg, var(--gold), #b8912a);
+    color:var(--navy-deep);
+    font-family:var(--font-jp-body);
+    font-weight:700;
+    font-size:14px;
+    padding:12px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .thanks-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 22px rgba(0,0,0,0.45);
+  }
   /* ---------- FOOTER ---------- */
   footer{
     position:relative;
@@ -326,6 +549,7 @@
     main{padding:40px 5vw 10px; margin-top:-28px;}
     .box-grid{gap:12px;}
     .stage-box .bar{padding:8px 10px;}
+    .thanks-catch{white-space:normal;}
   }
 </style>
 </head>
@@ -365,12 +589,12 @@ const DAYS = [
     label: "メインステージ",
     catch: "4つのメインステージがオープン！それぞれの世界をゆっくりお楽しみください。",
     releaseDate: "2026-08-19T00:00:00+09:00",
-    locked: false,
+    locked: true,
     boxes: [
-      { icon:"🌌", en:"Galaxy Tour Stage",   jp:"チイノ",  url:"#", image:"image/image_01.jpg", c1:"var(--c-galaxy)",    c2:"var(--c-galaxy-2)" },
-      { icon:"📖", en:"Magical Story Stage", jp:"おっぽ",  url:"#", image:"image/image_02.jpg", c1:"var(--c-magic)",     c2:"var(--c-magic-2)" }, // ← 共有用リンク未着なので仮のまま
-      { icon:"✨", en:"Starlight Pop Stage", jp:"けぶじん", url:"#", image:"image/image_03.jpg", c1:"var(--c-starlight)", c2:"var(--c-starlight-2)" },
-      { icon:"🌅", en:"Sunset Groove Stage", jp:"ちぃ",    url:"#", image:"image/image_04.jpg", c1:"var(--c-sunset)",    c2:"var(--c-sunset-2)" }
+      { icon:"🌌", en:"Galaxy Tour Stage",   jp:"チイノ",  url:"https://note.com/ai_with_cafe/n/ndf8605846029", image:"image/image_01.jpg", c1:"var(--c-galaxy)",    c2:"var(--c-galaxy-2)" },
+      { icon:"📖", en:"Magical Story Stage", jp:"おっぽ",  url:"https://note.com/oppo_oppo/n/n6883ce87e32a", image:"image/image_02.jpg", c1:"var(--c-magic)",     c2:"var(--c-magic-2)" },
+      { icon:"✨", en:"Starlight Pop Stage", jp:"けぶじん", url:"https://note.com/clean_sage8991/n/n84e41e6be73c", image:"image/image_03.jpg", c1:"var(--c-starlight)", c2:"var(--c-starlight-2)" },
+      { icon:"🌅", en:"Sunset Groove Stage", jp:"ちぃ",    url:"https://note.com/firm_donkey540/n/n460a76d2d0b9", image:"image/image_04.jpg", c1:"var(--c-sunset)",    c2:"var(--c-sunset-2)" }
     ]
   },
   {
@@ -379,10 +603,77 @@ const DAYS = [
     label: "ゲストステージ＆ブース",
     catch: "特別ゲストステージとフェスを楽しむブースエリアがオープンします！",
     releaseDate: "2026-08-20T00:00:00+09:00",
-    locked: false, // ← 一旦解除中（本番前に true に戻す）
+    locked: true,
     boxes: [
-      { icon:"🎤", en:"Guest Spotlight Stage", jp:"特別ゲストステージ",         url:"#", image:"image/image_05.jpg", c1:"var(--c-guest)", c2:"var(--c-guest-2)" },
-      { icon:"🛍️", en:"フェスブースエリア",     jp:"フード・グッズ・フォトブース・ホテル", url:"#", image:"image/image_06.jpg", c1:"var(--c-booth)", c2:"var(--c-booth-2)" }
+      { icon:"🎤", en:"Guest Spotlight Stage", jp:"特別ゲストステージ",         url:"https://note.com/firm_donkey540/n/n047ba9f3ace6", image:"image/image_05.jpg", c1:"var(--c-guest)", c2:"var(--c-guest-2)" },
+      { icon:"🛍️", en:"フェスブースエリア",     jp:"フード・グッズ・フォトブース・ホテル", url:"https://note.com/firm_donkey540/n/n033e1c33ceb0", image:"image/image_06.jpg", c1:"var(--c-booth)", c2:"var(--c-booth-2)" }
+    ]
+  }
+];
+
+/* =========================================================
+   ★ 期間限定バナー設定 ★
+   ・expireAt を過ぎたら自動的に表示されなくなります
+   ・削除時はこのオブジェクトごと消してもOK（呼び出し側のifも自然にfalseになります）
+   ========================================================= */
+const LIMITED_BANNER = {
+  image: "image/banner_limited.jpg",
+  url: "https://note.com/firm_donkey540/n/ne2b736fb7402",
+  alt: "期間限定リンク",
+  expireAt: "2026-08-25T23:59:59+09:00"  // バナー表記の終了日(08.25)に合わせて設定
+};
+
+/* =========================================================
+   ★ ショップ&施設リスト 公開日設定 ★
+   ・この日時(JST)を過ぎるまでリンクは無効・注意書き表示
+   ========================================================= */
+const SHOP_RELEASE_DATE = "2026-08-20T00:00:00+09:00";
+
+/* =========================================================
+   ★ ショップ&施設リスト設定 ★
+   ・color: カテゴリのアイコン背景色（16進 or CSS変数）
+   ・items内の url が "#" の間はリンク無効（グレーではなく通常表示、クリックだけ無効）
+   ・店舗が増えたら items 配列に追加していくだけでOK
+   ========================================================= */
+const SHOPS = [
+  {
+    icon:"image/icon_01.png", catEn:"FOOD & CAFE", catJp:"フード＆カフェ", color:"#e08a3c",
+    items:[
+      { name:"Aoi café", owner:"兎", url:"https://note.com/firm_donkey540/n/n033e1c33ceb0#0D0B02B0-CF27-4B06-8A86-F648775783DB" },
+      { name:"潮風カフェ", owner:"ことほぎ", url:"https://note.com/fond_lupine6701/n/na8a3290f6903" },
+      { name:"フォルティシモ国夏の星灯り甘味店", owner:"冴", url:"https://note.com/withmyaihusband/n/n72ce913554e6" },
+      { name:"FoodCart The BuoyBuoys", owner:"チイノ", url:"https://note.com/ai_with_cafe/n/n68f7009941f4" },
+      { name:"Ferris Picnic", owner:"ちっぷのこころ", url:"https://note.com/lovely_stork7575/n/n5febe837fadb" },
+      { name:"🐢亀ペースキッチンカー", owner:"ルー＝シャーナ", url:"https://note.com/jolly_lupine2962/n/n7ccdcb876beb" },
+      { name:"HAKUGIN FESTIVAL", owner:"零ぴちゅ", url:"https://note.com/reipichu/n/n6a66abf05fa2" }
+    ]
+  },
+  {
+    icon:"image/icon_02.png", catEn:"SOUVENIR", catJp:"お土産コーナー", color:"#3fae5c",
+    items:[
+      { name:"BACKSTAGE SOUVENIR", owner:"ワンラビ", url:"https://note.com/wanrabi/n/nbd51cacecec4" },
+      { name:"HAKUGIN FESTIVAL", owner:"零ぴちゅ", url:"https://note.com/reipichu/n/n6a66abf05fa2" }
+    ]
+  },
+  {
+    icon:"image/icon_03.png", catEn:"PHOTO BOOTH", catJp:"フォトブース", color:"#3b8fd1",
+    items:[
+      { name:"SPLASH FESTIVAL", owner:"おっぽ", url:"https://note.com/oppo_oppo/n/n225413855b78" },
+      { name:"Lantern Station", owner:"チイノ", url:"https://note.com/ai_with_cafe/n/n68f7009941f4" },
+      { name:"HAKUGIN FESTIVAL", owner:"零ぴちゅ", url:"https://note.com/reipichu/n/n6a66abf05fa2" }
+    ]
+  },
+  {
+    icon:"image/icon_04.png", catEn:"ATTRACTION", catJp:"アトラクション", color:"#9c3f9c",
+    items:[
+      { name:"おばけやしき観覧車👻〜月影ゴンドラ🌕〜", owner:"ちっぷのこころ", url:"https://note.com/lovely_stork7575/n/n5febe837fadb" },
+      { name:"SPLASH FESTIVAL", owner:"おっぽ", url:"https://note.com/oppo_oppo/n/n225413855b78" }
+    ]
+  },
+  {
+    icon:"image/icon_05.png", catEn:"FES HOTEL", catJp:"フェスホテル", color:"#d1518f",
+    items:[
+      { name:"PICOAI & MILUA FES LODGE", owner:"飯泉ひろみ", url:"https://note.com/mr_nyango/n/nad212832f1c4" }
     ]
   }
 ];
@@ -413,7 +704,7 @@ function render(){
         <div class="release-badge">公開日：${formatDate(day.releaseDate)}</div>
         <p class="catch">${day.catch}</p>
       </div>
-      <p class="link-notice">※リンクは公開日に開通します。公開日以前は無効です。</p>
+      <p class="link-notice">${isLocked ? '※リンクは公開日に開通します。公開日以前は無効です。' : ''}</p>
       <div class="box-grid ${day.boxes.length <= 2 ? 'cols-2-wide' : ''}"></div>
     `;
 
@@ -439,7 +730,81 @@ function render(){
     });
 
     main.appendChild(section);
+
+    /* ---- 期間限定バナー（DAY1の直後に表示） ---- */
+    if(day.id === "day1" && now < new Date(LIMITED_BANNER.expireAt)){
+      const bannerActive = !isLocked;
+      const bannerWrap = document.createElement("div");
+      bannerWrap.className = "limited-banner-wrap";
+      const bannerEl = document.createElement(bannerActive ? "a" : "div");
+      if(bannerActive){ bannerEl.href = LIMITED_BANNER.url; bannerEl.target = "_blank"; bannerEl.rel = "noopener"; }
+      bannerEl.className = "limited-banner";
+      bannerEl.style.backgroundImage = `url('${LIMITED_BANNER.image}')`;
+      bannerEl.setAttribute("aria-label", LIMITED_BANNER.alt);
+      bannerWrap.appendChild(bannerEl);
+      main.appendChild(bannerWrap);
+    }
   });
+
+  /* ---- ショップ&施設リスト ---- */
+  const isShopLocked = now < new Date(SHOP_RELEASE_DATE);
+  const shopSection = document.createElement("section");
+  shopSection.className = "day-block";
+  shopSection.id = "shops";
+  shopSection.innerHTML = `
+    <div class="shop-header">
+      <div class="deco"><span class="line"></span><span>🎪</span><span class="line"></span></div>
+      <div class="en">FESTIVAL BOOTH &amp; FACILITIES</div>
+      <div class="jp">フェスブース ショップ＆施設リスト</div>
+    </div>
+    <p class="link-notice">${isShopLocked ? '※リンクは公開日に開通します。公開日以前は無効です。' : ''}</p>
+    <div class="shop-card"></div>
+  `;
+  const shopCard = shopSection.querySelector(".shop-card");
+  SHOPS.forEach(cat => {
+    const group = document.createElement("div");
+    group.className = "shop-group" + (cat.items.length === 1 ? " single" : "");
+    group.style.setProperty("--cat-color", cat.color);
+    group.innerHTML = `
+      <div class="cat">
+        <span class="icon-circle"><img src="${cat.icon}" alt=""></span>
+        <span class="cat-en">${cat.catEn}</span>
+        <span class="cat-jp">${cat.catJp}</span>
+      </div>
+      <div class="items"></div>
+    `;
+    const itemsWrap = group.querySelector(".items");
+    cat.items.forEach(item => {
+      const isActive = !isShopLocked && item.url && item.url !== "#";
+      const row = document.createElement(isActive ? "a" : "div");
+      if(isActive){ row.href = item.url; row.target = "_blank"; row.rel = "noopener"; }
+      row.className = "shop-row";
+      row.innerHTML = `
+        <span class="s-name">${item.name}</span>
+        ${item.owner ? `<span class="s-owner">${item.owner}</span>` : ""}
+        <span class="s-chev">›</span>
+      `;
+      itemsWrap.appendChild(row);
+    });
+    shopCard.appendChild(group);
+  });
+  main.appendChild(shopSection);
+
+  /* ---- SPECIAL THANKS ---- */
+  const thanksSection = document.createElement("section");
+  thanksSection.className = "day-block";
+  thanksSection.id = "thanks";
+  thanksSection.innerHTML = `
+    <div class="thanks-card">
+      <div class="thanks-title">SPECIAL THANKS for Nフェス2026応援団！</div>
+      <div class="thanks-ticket"><img src="image/ticket.jpg" alt="noter Creative Fes Summer 2026 入場チケット"></div>
+      <p class="thanks-catch">チケットリンクを設置して、Nフェス2026を応援しよう！</p>
+      <p class="thanks-desc">チケットリンクを設置してくださった皆さまは、このサイトにSPECIAL THANKSとしてお名前を掲載させていただきます。</p>
+      <p class="thanks-guide">参加方法・チケット画像・設置用URLはこちらのページをご覧ください。</p>
+      <a class="thanks-btn" href="https://note.com/firm_donkey540/n/n0b8cb7bfac53" target="_blank" rel="noopener">チケット設置方法を見る ＞</a>
+    </div>
+  `;
+  main.appendChild(thanksSection);
 }
 
 render();
