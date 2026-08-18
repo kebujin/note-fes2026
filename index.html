@@ -134,6 +134,48 @@
 
   .day-block{padding-bottom:44px;}
 
+  /* ---------- INTRO BLOCK (総合案内誘導) ---------- */
+  .intro-block{
+    text-align:center;
+    padding-bottom:40px;
+  }
+  .intro-deco{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:22px;
+    position:relative;
+    border-top:1px dashed var(--gold-line);
+    padding-top:16px;
+  }
+  .intro-deco .line{display:none;}
+  .intro-deco .star{
+    position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+    background:var(--navy-deep);
+    color:var(--gold);
+    padding:0 12px;
+    font-size:14px;
+    text-shadow:none;
+  }
+  .intro-title{
+    font-family:var(--font-jp-serif);
+    font-weight:700;
+    font-size:clamp(24px, 4.4vw, 34px);
+    color:var(--gold-text);
+    line-height:1.5;
+    margin-bottom:18px;
+  }
+  .intro-desc{
+    font-size:14px;
+    line-height:1.9;
+    color:#d8d3bf;
+    margin-bottom:26px;
+  }
+  .intro-arrow{
+    font-family:var(--font-jp-body);
+    font-weight:700;
+    font-size:16px;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
   .link-notice{
     text-align:center;
     font-size:15px;
@@ -520,22 +562,49 @@
     max-width:480px;
     margin:0 auto 10px;
   }
-  .thanks-btn{
-    display:inline-block;
+  .thanks-btn, .intro-btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:linear-gradient(135deg, var(--gold), #b8912a);
     color:var(--navy-deep);
     font-family:var(--font-jp-body);
     font-weight:700;
     font-size:14px;
-    padding:12px 28px;
+    padding:12px 52px;
     border-radius:8px;
     text-decoration:none;
     box-shadow:0 6px 16px rgba(0,0,0,0.35);
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .thanks-btn:hover{
+  .thanks-btn:hover, .intro-btn:hover{
     transform:translateY(-3px);
     box-shadow:0 10px 22px rgba(0,0,0,0.45);
+  }
+  .btn-arrow{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    width:36px;
+    height:36px;
+    fill:currentColor;
+  }
+  .intro-btn{
+    font-size:clamp(22px, 3.8vw, 28px);
+    padding:16px 68px;
+    min-width:420px;
+  }
+  .intro-btn .btn-arrow{
+    right:16px;
+    width:31px;
+    height:31px;
+  }
+  .thanks-btn .btn-arrow{
+    right:16px;
+    width:16px;
+    height:16px;
   }
   /* ---------- FOOTER ---------- */
   footer{
@@ -704,6 +773,19 @@ function render(){
   const main = document.getElementById("content");
   main.innerHTML = "";
 
+  /* ---- 総合案内イントロブロック ---- */
+  const introBlock = document.createElement("div");
+  introBlock.className = "intro-block";
+  introBlock.innerHTML = `
+    <div class="intro-deco"><span class="line"></span><span class="star">✦</span><span class="line"></span></div>
+    <h2 class="intro-title">これは誰でも参加できるnoteのフェスです！</h2>
+    <p class="intro-desc">ステージを見る・聴く！フェスブースで遊ぶ！体験記事を書く！<br>飛び入りでライブに参戦！などなど、楽しみ方も参加の仕方も無限大！</p>
+    <p class="intro-arrow">▼ フェスへの参加方法はこちら ▼</p>
+    <a class="intro-btn" href="https://note.com/firm_donkey540/n/nd653e2a32595" target="_blank" rel="noopener"><span class="btn-label">総合案内を見る</span><svg class="btn-arrow" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><polygon points="14.83 42.24 11.93 39.34 28.27 23 11.93 6.66 14.83 3.76 34.07 23 14.83 42.24"/></svg></a>
+    <div class="intro-deco" style="margin-top:40px; margin-bottom:0;"><span class="line"></span><span class="star">✦</span><span class="line"></span></div>
+  `;
+  main.appendChild(introBlock);
+
   DAYS.forEach(day => {
     const isLocked = day.locked && now < new Date(day.releaseDate);
 
@@ -815,7 +897,7 @@ function render(){
       <p class="thanks-catch">チケットリンクを設置して、Nフェス2026を応援しよう！</p>
       <p class="thanks-desc">チケットリンクを設置してくださった皆さまは、このサイトにSPECIAL THANKSとしてお名前を掲載させていただきます。</p>
       <p class="thanks-guide">参加方法・チケット画像・設置用URLはこちらのページをご覧ください。</p>
-      <a class="thanks-btn" href="https://note.com/firm_donkey540/n/n0b8cb7bfac53" target="_blank" rel="noopener">チケット設置方法を見る ＞</a>
+      <a class="thanks-btn" href="https://note.com/firm_donkey540/n/nd653e2a32595" target="_blank" rel="noopener"><span class="btn-label">総合案内を見る</span><svg class="btn-arrow" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><polygon points="14.83 42.24 11.93 39.34 28.27 23 11.93 6.66 14.83 3.76 34.07 23 14.83 42.24"/></svg></a>
     </div>
   `;
   main.appendChild(thanksSection);
