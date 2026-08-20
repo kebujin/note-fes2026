@@ -511,6 +511,71 @@
     border-color:var(--gold);
   }
 
+  /* ---------- SPECIAL ENTRY ARTISTS ---------- */
+  .entry-header{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .entry-title{
+    font-family:var(--font-jp-serif);
+    font-weight:700;
+    font-size:clamp(22px, 4.2vw, 32px);
+    color:var(--gold-text);
+  }
+  .entry-eyebrow{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(15px, 2.4vw, 19px);
+    letter-spacing:0.06em;
+    color:var(--gold);
+    margin-top:8px;
+  }
+  .entry-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:22px 18px;
+  }
+  .entry-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:82px;
+    text-decoration:none;
+    transition:transform .2s ease;
+  }
+  .entry-item:hover{
+    transform:translateY(-3px);
+  }
+  .entry-avatar{
+    width:66px;
+    height:66px;
+    border-radius:50%;
+    overflow:hidden;
+    border:1.5px solid var(--gold-line);
+    box-shadow:0 4px 14px rgba(0,0,0,0.4);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .entry-item:hover .entry-avatar{
+    border-color:var(--gold);
+    box-shadow:0 6px 18px rgba(0,0,0,0.5), 0 0 0 2px rgba(212,175,55,0.2);
+  }
+  .entry-avatar img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .entry-name{
+    margin-top:8px;
+    font-family:var(--font-jp-body);
+    font-size:12px;
+    color:#f4ecd8;
+    text-align:center;
+    line-height:1.3;
+  }
+
   /* ---------- SPECIAL THANKS SECTION ---------- */
   .thanks-card{
     position:relative;
@@ -769,6 +834,24 @@ const SHOPS = [
   }
 ];
 
+/* =========================================================
+   ★ SPECIAL ENTRY ARTISTS（自由参加）設定 ★
+   ・アイコン画像は各参加記事リンクの投稿者プロフィールから取得したもの
+   ========================================================= */
+const ENTRY_ARTISTS = [
+  { name:"タク＠HENDRE", url:"https://note.com/alert_clover9324/n/n001e18fc1485", icon:"https://assets.st-note.com/production/uploads/images/271515882/profile_2813e89b97e45da58ac568acba833973.png?width=60" },
+  { name:"もへ", url:"https://note.com/kakitaimohe/n/n5b56bfc60dc4", icon:"https://assets.st-note.com/production/uploads/images/242311501/profile_0b664e507333362e974f63ca5fbd9f5d.png?width=60" },
+  { name:"にゃんきち", url:"https://note.com/hikaru_no_yume72/n/n664eb50227c9", icon:"https://assets.st-note.com/production/uploads/images/256178434/profile_8e71e912cc7e2e050df493e53f7e66ef.png?width=60" },
+  { name:"きずな🌸", url:"https://note.com/soul_healinglife/n/nb40db56eb1ae", icon:"https://assets.st-note.com/production/uploads/images/267260596/profile_498713ded503ac02447a29aec612ecea.jpeg?width=60" },
+  { name:"KAi_ss", url:"https://note.com/platform0story/n/n654ceab31d7c", icon:"https://assets.st-note.com/production/uploads/images/280700055/profile_dbe9688914e5a2515a2a3eaeb7016931.png?width=60" },
+  { name:"江田島獄長", url:"https://note.com/kayee/n/n76dfa2433980", icon:"https://assets.st-note.com/production/uploads/images/305121650/profile_be4c1ffd8eadb374e08188120d047e01.png?width=60" },
+  { name:"山中サトシ", url:"https://note.com/fancy_nerine2305/n/nbf36225609ad", icon:"https://assets.st-note.com/production/uploads/images/235720947/profile_6f42cba9cdaa52532b9423dda0e2f8f3.jpg?width=60" },
+  { name:"響", url:"https://note.com/hibiki774/n/ne6d4ac05ec47", icon:"https://assets.st-note.com/production/uploads/images/264962038/profile_2adf67dc67e328ace97f492ba2ac44e4.png?width=60" },
+  { name:"樹莉杏", url:"https://note.com/gifted_mint8464/n/n96ee93f67695", icon:"https://assets.st-note.com/production/uploads/images/302950196/profile_33e7ce44215bc39bd7df2c9b84bca5af.png?width=60" },
+  { name:"雪", url:"https://note.com/yuk_soshi/n/nb42579f89021", icon:"https://assets.st-note.com/production/uploads/images/254337713/profile_2abb7079978f25c2617aa2c4708fe940.png?width=60" },
+  { name:"マンボNo.５", url:"https://note.com/tyama01ne4life/n/n25c57b85953c", icon:"https://assets.st-note.com/production/uploads/images/301261759/profile_185993efd2b1e9d77e06fbd6d6ba51c2.png?width=60" }
+];
+
 function formatDate(iso){
   const d = new Date(iso);
   const w = ["日","月","火","水","木","金","土"][d.getDay()];
@@ -892,6 +975,32 @@ function render(){
     shopCard.appendChild(group);
   });
   main.appendChild(shopSection);
+
+  /* ---- SPECIAL ENTRY ARTISTS ---- */
+  const entrySection = document.createElement("section");
+  entrySection.className = "day-block";
+  entrySection.id = "entry-artists";
+  entrySection.innerHTML = `
+    <div class="entry-header">
+      <div class="entry-title">SPECIAL ENTRY ARTISTS</div>
+      <div class="entry-eyebrow">🎤 参加アーティスト一覧（随時更新）</div>
+    </div>
+    <div class="entry-grid"></div>
+  `;
+  const entryGrid = entrySection.querySelector(".entry-grid");
+  ENTRY_ARTISTS.forEach(artist => {
+    const item = document.createElement("a");
+    item.className = "entry-item";
+    item.href = artist.url;
+    item.target = "_blank";
+    item.rel = "noopener";
+    item.innerHTML = `
+      <span class="entry-avatar"><img src="${artist.icon}" alt="${artist.name}"></span>
+      <span class="entry-name">${artist.name}</span>
+    `;
+    entryGrid.appendChild(item);
+  });
+  main.appendChild(entrySection);
 
   /* ---- SPECIAL THANKS ---- */
   const thanksSection = document.createElement("section");
