@@ -814,8 +814,8 @@ const SHOPS = [
   {
     icon:"image/icon_03.png", catEn:"PHOTO BOOTH", catJp:"フォトブース", color:"#3b8fd1",
     items:[
-      { name:"SPLASH FESTIVAL", owner:"おっぽ", url:"https://note.com/oppo_oppo/n/n225413855b78" },
-      { name:"Lantern Station", owner:"チイノ", url:"https://note.com/ai_with_cafe/n/n68f7009941f4" },
+      { name:"SPLASH FESTIVAL", owner:"おっぽ", url:"https://note.com/oppo_oppo/n/n225413855b78#c011752b-bb6b-4231-9f35-ee66e33ebea2" },
+      { name:"Lantern Station", owner:"チイノ", url:"https://note.com/ai_with_cafe/n/n68f7009941f4#689653ae-f0ce-480c-94eb-4c6b4eab876b" },
       { name:"HAKUGIN FESTIVAL", owner:"零ぴちゅ", url:"https://note.com/reipichu/n/n6a66abf05fa2" }
     ]
   },
@@ -846,6 +846,15 @@ const GUEST_ARTISTS = [
   { name:"華子", url:"https://note.com/genial_spirea716/n/n97471f94a039", icon:"https://assets.st-note.com/production/uploads/images/258028335/profile_2bb70ccccce23ac8888763e8a9d26ee2.jpg?width=60" },
   { name:"はるかな", url:"https://note.com/ai_crayon_04/n/nda08a8dbd96e", icon:"https://assets.st-note.com/production/uploads/images/198088948/profile_48c9707bd34fcfa1d4d85bda511a3307.jpg?width=60" },
   { name:"美咲", url:"https://note.com/misaki_mpy/n/n2fe49eee6b56", icon:"https://assets.st-note.com/production/uploads/images/238398834/profile_8d291446f5940cb9cc92865e8ed4f019.png?width=60" }
+];
+
+/* =========================================================
+   ★ FESTIVAL REPORTERS（参加・体験レポーター）設定 ★
+   ========================================================= */
+const REPORTER_ARTISTS = [
+  { name:"きさと", url:"https://note.com/kisato_0601/n/n1b90f6e68f61", icon:"https://assets.st-note.com/production/uploads/images/277013990/profile_708900fab5b855b52cfcc9d02b76badd.png?width=60" },
+  { name:"名前もと", url:"https://note.com/fresh_loris1944/n/n83c2a9bc9a8f", icon:"https://assets.st-note.com/production/uploads/images/297480062/profile_9e9471fa5254701a5d02873ed468b074.png?width=60" },
+  { name:"りゅか", url:"https://note.com/ryuka02120619/n/nec4ebc4cb0e6", icon:"https://assets.st-note.com/production/uploads/images/267849467/profile_ee781dc1852984dd699ccb388883c108.png?width=60" }
 ];
 
 /* =========================================================
@@ -1042,6 +1051,32 @@ function render(){
     entryGrid.appendChild(item);
   });
   main.appendChild(entrySection);
+
+  /* ---- FESTIVAL REPORTERS ---- */
+  const reporterSection = document.createElement("section");
+  reporterSection.className = "day-block";
+  reporterSection.id = "reporter-artists";
+  reporterSection.innerHTML = `
+    <div class="entry-header">
+      <div class="entry-title">FESTIVAL REPORTERS</div>
+      <div class="entry-eyebrow">🖊️ フェス参加・体験レポーター</div>
+    </div>
+    <div class="entry-grid"></div>
+  `;
+  const reporterGrid = reporterSection.querySelector(".entry-grid");
+  REPORTER_ARTISTS.forEach(artist => {
+    const item = document.createElement("a");
+    item.className = "entry-item";
+    item.href = artist.url;
+    item.target = "_blank";
+    item.rel = "noopener";
+    item.innerHTML = `
+      <span class="entry-avatar"><img src="${artist.icon}" alt="${artist.name}"></span>
+      <span class="entry-name">${artist.name}</span>
+    `;
+    reporterGrid.appendChild(item);
+  });
+  main.appendChild(reporterSection);
 
   /* ---- SPECIAL THANKS ---- */
   const thanksSection = document.createElement("section");
