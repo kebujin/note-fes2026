@@ -768,15 +768,15 @@ const DAYS = [
 ];
 
 /* =========================================================
-   ★ 期間限定バナー設定 ★
-   ・expireAt を過ぎたら自動的に表示されなくなります
-   ・削除時はこのオブジェクトごと消してもOK（呼び出し側のifも自然にfalseになります）
+   ★ バナー設定 ★
+   ・期限予定が変更になったため、当面は無期限で表示継続
+   ・再度期限を設けたくなったら expireAt を復活させ、下のif文に
+     `&& now < new Date(LIMITED_BANNER.expireAt)` を戻せばOK
    ========================================================= */
 const LIMITED_BANNER = {
   image: "image/banner_limited.jpg",
   url: "https://note.com/firm_donkey540/n/ne2b736fb7402",
-  alt: "期間限定リンク",
-  expireAt: "2026-08-25T23:59:59+09:00"  // バナー表記の終了日(08.25)に合わせて設定
+  alt: "期間限定リンク"
 };
 
 /* =========================================================
@@ -895,7 +895,12 @@ const ENTRY_ARTISTS = [
   { name:"東雲 彩🐾", url:"https://note.com/huge_camel240524/n/n9feb2d633771", icon:"https://assets.st-note.com/production/uploads/images/254290843/profile_8c8baa58613313d530e01578f0a0934d.png?width=80&height=80&dpr=2&crop=1:1,smart" },
   { name:"しずく", url:"https://note.com/lively_stilt5025/n/nd116f3bc3983", icon:"https://assets.st-note.com/production/uploads/images/298590411/profile_4949205ce5eb385471402a597ed9bb26.png?width=80&height=80&dpr=2&crop=1:1,smart" },
   { name:"ほぴこ", url:"https://note.com/joyous_sage6209/n/n806bffb3bab2", icon:"https://assets.st-note.com/production/uploads/images/280851569/profile_0bd0312e36d66c620ccc2b0182b9879f.png?width=80&height=80&dpr=2&crop=1:1,smart" },
-  { name:"北ノ", url:"https://note.com/kitaoid/n/na36dd61c48b1", icon:"https://assets.st-note.com/production/uploads/images/258150910/profile_dc32914fee26f85f96f00ac44637333f.png?width=80&height=80&dpr=2&crop=1:1,smart" }
+  { name:"北ノ", url:"https://note.com/kitaoid/n/na36dd61c48b1", icon:"https://assets.st-note.com/production/uploads/images/258150910/profile_dc32914fee26f85f96f00ac44637333f.png?width=80&height=80&dpr=2&crop=1:1,smart" },
+  { name:"COBITo", url:"https://note.com/cobito_story/n/na75c466fa2bc", icon:"https://assets.st-note.com/production/uploads/images/252122220/profile_a49d2dd9362df876d6516887675d047c.png?width=80&height=80&dpr=2&crop=1:1,smart" },
+  { name:"妃沙　彩未", url:"https://note.com/hisa_army/n/nd7523eaa0beb", icon:"https://assets.st-note.com/production/uploads/images/297327071/profile_73724ebc36b3b9cafe94265213a372b4.png?width=80&height=80&dpr=2&crop=1:1,smart" },
+  { name:"ルー＝シャーナ", url:"https://note.com/jolly_lupine2962/n/n8a1741c52ccd", icon:"https://assets.st-note.com/production/uploads/images/303061472/profile_b5be8eb2c9fcba4afc62f1724705313b.png?width=80&height=80&dpr=2&crop=1:1,smart" },
+  { name:"アメリ🐈️", url:"https://note.com/mild_sheep8979/n/n0239cb08ec5a", icon:"https://assets.st-note.com/production/uploads/images/245678157/profile_8fdb5f0ad5e789a891c5fbe2017ef96d.png?width=80&height=80&dpr=2&crop=1:1,smart" },
+  { name:"天野 雫", url:"https://note.com/proper_bonobo536/n/n2880fd59aaa4", icon:"https://assets.st-note.com/production/uploads/images/252856370/profile_866f40df26780c146ef9459cf81a675c.png?width=80&height=80&dpr=2&crop=1:1,smart" }
 ];
 
 function formatDate(iso){
@@ -965,7 +970,7 @@ function render(){
     main.appendChild(section);
 
     /* ---- 期間限定バナー（DAY1の直後に表示） ---- */
-    if(day.id === "day1" && now < new Date(LIMITED_BANNER.expireAt)){
+    if(day.id === "day1"){
       const bannerActive = !isLocked;
       const bannerWrap = document.createElement("div");
       bannerWrap.className = "limited-banner-wrap";
