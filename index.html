@@ -135,6 +135,26 @@
   .day-block{padding-bottom:44px;}
 
   /* ---------- INTRO BLOCK (総合案内誘導) ---------- */
+  .top-banner-wrap{
+    margin-bottom:44px;
+  }
+  .top-banner{
+    display:block;
+    width:100%;
+    aspect-ratio:1637/960;
+    border-radius:8px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    border:1.5px solid var(--gold-line);
+    box-shadow:0 8px 22px rgba(0,0,0,0.45);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .top-banner:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(0,0,0,0.55);
+    border-color:var(--gold);
+  }
   .intro-block{
     text-align:center;
     padding-bottom:40px;
@@ -921,6 +941,19 @@ function render(){
   const now = new Date();
   const main = document.getElementById("content");
   main.innerHTML = "";
+
+  /* ---- トップバナー(Tシャツ祭り) ---- */
+  const topBannerWrap = document.createElement("div");
+  topBannerWrap.className = "top-banner-wrap";
+  const topBannerEl = document.createElement("a");
+  topBannerEl.href = "https://note.com/ai_with_cafe/n/nbb1e39f4f100";
+  topBannerEl.target = "_blank";
+  topBannerEl.rel = "noopener";
+  topBannerEl.className = "top-banner";
+  topBannerEl.style.backgroundImage = "url('image/baner_t-sheet.jpg')";
+  topBannerEl.setAttribute("aria-label", "N-Fes 2026 Tシャツ祭り開催中！");
+  topBannerWrap.appendChild(topBannerEl);
+  main.appendChild(topBannerWrap);
 
   /* ---- 総合案内イントロブロック ---- */
   const introBlock = document.createElement("div");
