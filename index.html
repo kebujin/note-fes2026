@@ -141,7 +141,7 @@
   .top-banner{
     display:block;
     width:100%;
-    aspect-ratio:1637/960;
+    aspect-ratio:1737/906;
     border-radius:8px;
     overflow:hidden;
     background-size:cover;
@@ -995,16 +995,16 @@ function render(){
   const main = document.getElementById("content");
   main.innerHTML = "";
 
-  /* ---- トップバナー(Tシャツ祭り) ---- */
+  /* ---- トップバナー(コトバフェス) ---- */
   const topBannerWrap = document.createElement("div");
   topBannerWrap.className = "top-banner-wrap";
   const topBannerEl = document.createElement("a");
-  topBannerEl.href = "https://note.com/ai_with_cafe/n/nbb1e39f4f100";
+  topBannerEl.href = "https://note.com/mr_nyango/n/n12a61131eaab";
   topBannerEl.target = "_blank";
   topBannerEl.rel = "noopener";
   topBannerEl.className = "top-banner";
-  topBannerEl.style.backgroundImage = "url('image/baner_t-sheet.jpg')";
-  topBannerEl.setAttribute("aria-label", "N-Fes 2026 Tシャツ祭り開催中！");
+  topBannerEl.style.backgroundImage = "url('image/kbanner_kotoba_fes.jpg')";
+  topBannerEl.setAttribute("aria-label", "Nフェス2026公式 コトバフェス お題「この一曲」");
   topBannerWrap.appendChild(topBannerEl);
   main.appendChild(topBannerWrap);
 
